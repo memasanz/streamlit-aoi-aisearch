@@ -125,9 +125,13 @@ class ChatOnYourDataWithAzureOpenAI:
                                 {
                                     "type": "azure_search",
                                     "parameters": {
+                                        # "authentication": {
+                                        #     "type": "system_assigned_managed_identity"
+                                        #     },
                                         "authentication": {
-                                            "type": "system_assigned_managed_identity"
-                                            },
+                                            "type": "api_key",
+                                            "key": os.environ["AZURE_SEARCH_ADMIN_KEY"],
+                                        },  
                                         "endpoint": self.AZURE_SEARCH_SERVICE_ENDPOINT,
                                         "index_name": self.AZURE_SEARCH_INDEX,
                                         "fields_mapping": {
